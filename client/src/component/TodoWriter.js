@@ -1,16 +1,7 @@
-import { useState } from "react";
-
-export default function TodoWriter() {
-  const [newTodoTitle, setNewTodoTitle] = useState("");
-  const [todos, setTodos] = useState([]);
+export default function TodoWriter({ newTodoTitle, setNewTodoTitle, addTodo }) {
   function onChange(e) {
     console.log(e.target.value);
     setNewTodoTitle(e.target.value);
-  }
-
-  function addTodo() {
-    setTodos([...todos, newTodoTitle]);
-    setNewTodoTitle("");
   }
   return (
     <div>
@@ -24,9 +15,6 @@ export default function TodoWriter() {
         &nbsp;
         <button onClick={addTodo}>할 일 추가</button>
       </div>
-
-      <hr />
-      <div>{JSON.stringify(todos)}</div>
     </div>
   );
 }
