@@ -4,25 +4,24 @@ import { useState } from "react";
 import TodoWriter from "./component/TodoWriter";
 import TodoList from "./component/TodoList";
 function App() {
-  const [newTodoTitle, setNewTodoTitle] = useState("");
   const [todos, setTodos] = useState([]);
 
-  function addTodo() {
-    if (newTodoTitle.trim().length === 0) return;
-    setTodos([...todos, newTodoTitle]);
-    setNewTodoTitle("");
+  function addTodo(newTitle) {
+    if (newTitle.trim().length === 0) return;
+    setTodos([...todos, newTitle.trim()]);
+  }
+
+  function removeTodo(index) {
+    const newTodos = todos.filter((todo, _index) => _index !== index);
+    setTodos(newTodos);
   }
 
   return (
     <div className="App">
       <h1>Todos</h1>
-      <TodoWriter
-        newTodoTitle={newTodoTitle}
-        setNewTodoTitle={setNewTodoTitle}
-        addTodo={addTodo}
-      />
+      <TodoWriter addTodo={addTodo} />
       <hr />
-      <TodoList todos={todos} setTodos={setTodos} />
+      <TodoList todos={todos} removeTodo={removeTodo} />
     </div>
   );
 }

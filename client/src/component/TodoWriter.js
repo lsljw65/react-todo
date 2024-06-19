@@ -1,4 +1,11 @@
-export default function TodoWriter({ newTodoTitle, setNewTodoTitle, addTodo }) {
+import { useState } from "react";
+export default function TodoWriter({ addTodo: at }) {
+  const [newTodoTitle, setNewTodoTitle] = useState("");
+  const addTodo = () => {
+    if (newTodoTitle.trim().length === 0) return;
+    at(newTodoTitle);
+    setNewTodoTitle("");
+  };
   function onChange(e) {
     console.log(e.target.value);
     setNewTodoTitle(e.target.value);

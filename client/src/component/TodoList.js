@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 
-export default function TodoList({ todos, setTodos }) {
+export default function TodoList({ todos, removeTodo }) {
   return (
     <div>
       <ul>
@@ -9,8 +9,7 @@ export default function TodoList({ todos, setTodos }) {
             key={index}
             index={index}
             todo={todo}
-            todos={todos}
-            setTodos={setTodos}
+            removeTodo={removeTodo}
           />
         ))}
       </ul>
