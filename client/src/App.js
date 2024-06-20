@@ -16,12 +16,18 @@ function App() {
     setTodos(newTodos);
   }
 
+  function modifyTodo(index, todo) {
+    const newTodos = todos.map((_todo, _index) =>
+      _index !== index ? _todo : todo
+    );
+    setTodos(newTodos);
+  }
   return (
     <div className="App">
       <h1>Todos</h1>
       <TodoWriter addTodo={addTodo} />
       <hr />
-      <TodoList todos={todos} removeTodo={removeTodo} />
+      <TodoList todos={todos} removeTodo={removeTodo} modifyTodo={modifyTodo} />
     </div>
   );
 }
